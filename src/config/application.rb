@@ -8,7 +8,7 @@ require 'active_record/railtie'
 require 'active_storage/engine'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
-require 'action_mailbox/engine'
+#require 'action_mailbox/engine'
 require 'action_text/engine'
 require 'action_view/railtie'
 require 'action_cable/engine'
@@ -33,5 +33,10 @@ module App
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # remove active_storage routes, if you use active_storage, remove below.
+    initializer(:remove_activestorage_routes, after: :add_routing_paths) do |app|
+      app.routes_reloader.paths.delete_if { |path| path =~ /activestorage/ }
+    end
   end
 end
