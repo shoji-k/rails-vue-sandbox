@@ -38,5 +38,20 @@ module App
     initializer(:remove_activestorage_routes, after: :add_routing_paths) do |app|
       app.routes_reloader.paths.delete_if { |path| path =~ /activestorage/ }
     end
+
+    config.generators do |g|
+      g.assets false
+      g.skip_routes false
+      g.helper false
+      g.test_framework :rspec,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+        controller_specs: false,
+        request_specs: true,
+        fixtures: true
+      # g.fixture_replacement :factory_bot, dir: "spec/factories"
+    end
   end
 end
+
