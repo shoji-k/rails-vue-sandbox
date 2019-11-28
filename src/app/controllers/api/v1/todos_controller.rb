@@ -4,8 +4,7 @@ class Api::V1::TodosController < Api::V1::ApplicationController
   # GET /todos
   def index
     @todos = Todo.all
-
-    render json: @todos
+    render json: TodoSerializer.new(@todos).serialized_json
   end
 
   # GET /todos/1
