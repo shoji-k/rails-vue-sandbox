@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Todos", type: :request do
-  describe "GET /api/v1/todos" do
+RSpec.describe 'Todos', type: :request do
+  describe 'GET /api/v1/todos' do
     context 'without data' do
-      it "can access and get empty" do
+      it 'can access and get empty' do
         get api_v1_todos_path
         expect(response).to have_http_status(200)
 
@@ -15,7 +15,7 @@ RSpec.describe "Todos", type: :request do
     context 'with data' do
       let!(:todo) { FactoryBot.create(:todo) }
 
-      it "can access and get data" do
+      it 'can access and get data' do
         get api_v1_todos_path
         expect(response).to have_http_status(200)
 
