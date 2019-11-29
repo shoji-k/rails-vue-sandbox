@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: api-v1
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000/api/v1/'
+  - url: 'http://dev.freks.jp:33000/api/v1/'
+    description: freks
+paths:
+  /todos:
+    get:
+      summary: api_v1_todos
+      tags:
+        - todo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/todo'
+              examples:
+                three todos:
+                  value:
+                    data:
+                      - id: '1'
+                        type: todo
+                        attributes:
+                          title: buy milk
+                          detail: at supermarket
+                          done: false
+                      - id: '2'
+                        type: todo
+                        attributes:
+                          title: 'clean my room '
+                          detail: ''
+                          done: false
+                      - id: '3'
+                        type: todo
+                        attributes:
+                          title: go to gym
+                          detail: kick-box
+                          done: true
+      operationId: get-todos
+components:
+  schemas:
+    todo:
+      title: todo
+      type: object
+      x-tags:
+        - todo
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+            - title
+            - done
+          properties:
+            title:
+              type: string
+            detail:
+              type: string
+            done:
+              type: boolean
+      required:
+        - id
+        - type
+        - attributes
+      x-examples:
+        one:
+          data:
+            - id: '1'
+              type: todo
+              attributes:
+                title: buy milk
+                detail: at supermarket
+                done: false
+      description: ''
