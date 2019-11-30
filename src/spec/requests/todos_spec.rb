@@ -8,7 +8,7 @@ RSpec.describe 'Todos', type: :request do
   end
 
   def committee_options
-    @committee_options ||= { schema_path: schema_path, prefix: '/api/v1/' }
+    @committee_options ||= { schema_path: schema_path, prefix: '/api/v1' }
   end
 
   describe 'GET /api/v1/todos' do
