@@ -14,7 +14,7 @@
     }
   ],
   "paths": {
-    "/todos": {
+    "todos": {
       "get": {
         "summary": "api_v1_todos",
         "tags": [
@@ -76,7 +76,8 @@
           }
         },
         "operationId": "get-todos"
-      }
+      },
+      "parameters": []
     }
   },
   "components": {
