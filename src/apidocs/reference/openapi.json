@@ -26,60 +26,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "title": "todo",
-                    "type": "object",
-                    "x-tags": [
-                      "todo"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "integer"
-                      },
-                      "type": {
-                        "type": "string"
-                      },
-                      "attributes": {
-                        "type": "object",
-                        "required": [
-                          "title",
-                          "done"
-                        ],
-                        "properties": {
-                          "title": {
-                            "type": "string"
-                          },
-                          "detail": {
-                            "type": "string"
-                          },
-                          "done": {
-                            "type": "boolean"
-                          }
-                        }
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/todo"
                       }
-                    },
-                    "required": [
-                      "id",
-                      "type",
-                      "attributes"
-                    ],
-                    "x-examples": {
-                      "one": {
-                        "data": [
-                          {
-                            "id": "1",
-                            "type": "todo",
-                            "attributes": {
-                              "title": "buy milk",
-                              "detail": "at supermarket",
-                              "done": false
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    "description": ""
+                    }
                   }
                 },
                 "examples": {
@@ -135,7 +89,7 @@
         ],
         "properties": {
           "id": {
-            "type": "integer"
+            "type": "string"
           },
           "type": {
             "type": "string"

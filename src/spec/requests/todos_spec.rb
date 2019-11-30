@@ -1,10 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe 'Todos', type: :request do
+  include Committee::Rails::Test::Methods
+
+  def schema_path
+    Rails.root.join('apidocs/reference/openapi.json')
+  end
+
+  def committee_options
+    @committee_options ||= { schema_path: schema_path, prefix: '/api/v1' }
+  end
+
   describe 'GET /api/v1/todos' do
     context 'without data' do
       it 'can access and get empty' do
         get api_v1_todos_path
+        assert_response_schema_confirm
         expect(response).to have_http_status(200)
 
         json = JSON.parse(response.body)
@@ -17,6 +28,8 @@ RSpec.describe 'Todos', type: :request do
 
       it 'can access and get data' do
         get api_v1_todos_path
+        # assert_schema_conform
+        assert_response_schema_confirm
         expect(response).to have_http_status(200)
 
         json = JSON.parse(response.body)
