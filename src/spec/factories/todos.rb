@@ -2,7 +2,7 @@
 #
 # Table name: todos
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  detail     :text
 #  done       :boolean          default(FALSE), not null
 #  title      :string           not null
