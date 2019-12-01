@@ -43,17 +43,17 @@ RSpec.describe 'Todos', type: :request do
         9_999_999
       end
 
-      it 'handles not found error' do
+      it 'throw not found error' do
         expect {
           get(api_v1_todo_path(dummy_todo_id.to_s))
         }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
-    context 'with data' do
+    context 'success' do
       let!(:todo) { FactoryBot.create(:todo) }
 
-      it 'can access and get data' do
+      it 'gets data' do
         get api_v1_todo_path(todo)
         assert_response_schema_confirm
         expect(response).to have_http_status(200)
@@ -78,14 +78,14 @@ RSpec.describe 'Todos', type: :request do
       end
     end
 
-    context 'fails' do
+    context 'failure' do
       let(:params) {
         {
           detail: 'sample detail',
           done: false
         }
       }
-      it 'handles errors with wrong params' do
+      it 'gets errors without a mandatory field' do
         post api_v1_todos_path, params: { todo: params }
         assert_response_schema_confirm
         expect(response).to have_http_status(:unprocessable_entity)
@@ -112,7 +112,7 @@ RSpec.describe 'Todos', type: :request do
       end
     end
 
-    context 'fails' do
+    context 'failure' do
       let(:params) {
         {
           title: ''
@@ -131,7 +131,7 @@ RSpec.describe 'Todos', type: :request do
     let!(:todo) { FactoryBot.create(:todo) }
 
     context 'success' do
-      it 'delete the todo' do
+      it 'deletes the todo' do
         delete api_v1_todo_path(todo)
         assert_response_schema_confirm
         expect(response).to have_http_status(:no_content)
