@@ -34,7 +34,10 @@
                         "$ref": "#/components/schemas/todo"
                       }
                     }
-                  }
+                  },
+                  "required": [
+                    "data"
+                  ]
                 },
                 "examples": {
                   "three todos": {
@@ -91,7 +94,10 @@
                     "data": {
                       "$ref": "#/components/schemas/todo"
                     }
-                  }
+                  },
+                  "required": [
+                    "data"
+                  ]
                 },
                 "examples": {
                   "one": {
@@ -174,7 +180,10 @@
                     "data": {
                       "$ref": "#/components/schemas/todo"
                     }
-                  }
+                  },
+                  "required": [
+                    "data"
+                  ]
                 }
               }
             }
@@ -188,7 +197,10 @@
                     "data": {
                       "$ref": "#/components/schemas/todo"
                     }
-                  }
+                  },
+                  "required": [
+                    "data"
+                  ]
                 },
                 "examples": {
                   "one": {
@@ -236,7 +248,10 @@
                     "data": {
                       "$ref": "#/components/schemas/todo"
                     }
-                  }
+                  },
+                  "required": [
+                    "data"
+                  ]
                 }
               }
             }
