@@ -9,7 +9,7 @@ class Api::V1::TodosController < Api::V1::ApplicationController
 
   # GET /todos/1
   def show
-    render json: @todo
+    render json: TodoSerializer.new(@todo).serialized_json
   end
 
   # POST /todos

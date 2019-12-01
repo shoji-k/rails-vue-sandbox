@@ -36,4 +36,28 @@ RSpec.describe 'Todos', type: :request do
       end
     end
   end
+
+  describe 'GET /api/v1/todos/:id' do
+    context 'exception' do
+      let(:dummy_todo_id) do
+        9_999_999
+      end
+
+      it 'handles not found error' do
+        expect {
+          get(api_v1_todo_path(dummy_todo_id.to_s))
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context 'with data' do
+      let!(:todo) { FactoryBot.create(:todo) }
+
+      it 'can access and get data' do
+        get(api_v1_todo_path(todo))
+        assert_response_schema_confirm
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
 end
