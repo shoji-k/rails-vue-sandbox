@@ -6,9 +6,9 @@ services:
       - ./src:/app
       - bundle:/bundle
     ports:
-      - 33000:3000
-    depends_on:
-      - db
+      - 3000:3000
+  # depends_on:
+  #   - db
     stdin_open: true
     tty: true
     environment:
@@ -17,15 +17,15 @@ services:
       RAILS_DATABASE_PASSWORD: password
       MAIL_HOST: mail
     env_file: .env
-  db:
-    image: shojik/postgres:12
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
-      - ./log:/root/log:cached
-    environment:
-      POSTGRES_DB: sampledb
-      POSTGRES_USER: pguser
-      POSTGRES_PASSWORD: password
+  # db:
+  #   image: shojik/postgres:12
+  #   volumes:
+  #     - ./pgdata:/var/lib/postgresql/data
+  #     - ./log:/root/log:cached
+  #   environment:
+  #     POSTGRES_DB: sampledb
+  #     POSTGRES_USER: pguser
+  #     POSTGRES_PASSWORD: password
   # front:
   #   image: node:12
   #   tty: true
