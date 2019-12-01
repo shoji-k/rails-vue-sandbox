@@ -1,0 +1,370 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "api",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1"
+    },
+    {
+      "url": "http://dev.freks.jp:3000/api/v1",
+      "description": "freks"
+    }
+  ],
+  "paths": {
+    "/todos": {
+      "get": {
+        "summary": "api_v1_todos",
+        "tags": [
+          "todo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/todo"
+                      }
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "three todos": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": "1",
+                          "type": "todo",
+                          "attributes": {
+                            "title": "buy milk",
+                            "detail": "at supermarket",
+                            "done": false
+                          }
+                        },
+                        {
+                          "id": "2",
+                          "type": "todo",
+                          "attributes": {
+                            "title": "clean my room ",
+                            "detail": "",
+                            "done": false
+                          }
+                        },
+                        {
+                          "id": "3",
+                          "type": "todo",
+                          "attributes": {
+                            "title": "go to gym",
+                            "detail": "kick-box",
+                            "done": true
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-todos"
+      },
+      "parameters": [],
+      "post": {
+        "summary": "",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/todo"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "one": {
+                    "value": {
+                      "data": {
+                        "id": "1",
+                        "type": "todo",
+                        "attributes": {
+                          "title": "sample title",
+                          "detail": "sample detail",
+                          "done": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errors"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "todo": {
+                    "type": "object",
+                    "required": [
+                      "title",
+                      "detail",
+                      "done"
+                    ],
+                    "properties": {
+                      "title": {
+                        "type": "string"
+                      },
+                      "detail": {
+                        "type": "string"
+                      },
+                      "done": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "todo"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todos/{id}": {
+      "get": {
+        "summary": "api_v1_todo",
+        "tags": [
+          "todo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/todo"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/todo"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "one": {
+                    "value": {
+                      "data": {
+                        "id": "1",
+                        "type": "todo",
+                        "attributes": {
+                          "title": "buy milk",
+                          "detail": "at supermarket",
+                          "done": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [],
+        "description": "",
+        "requestBody": {}
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/todo"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errors"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/todo"
+                  }
+                },
+                "required": [
+                  "data"
+                ]
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "delete": {
+        "summary": "",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "todo": {
+        "title": "todo",
+        "type": "object",
+        "x-tags": [
+          "todo"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "required": [
+              "title",
+              "detail",
+              "done"
+            ],
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "detail": {
+                "type": "string"
+              },
+              "done": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "x-examples": {
+          "one": {
+            "data": [
+              {
+                "id": "1",
+                "type": "todo",
+                "attributes": {
+                  "title": "buy milk",
+                  "detail": "at supermarket",
+                  "done": false
+                }
+              }
+            ]
+          }
+        },
+        "description": ""
+      },
+      "errors": {
+        "title": "errors",
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}
