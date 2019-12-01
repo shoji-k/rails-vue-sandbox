@@ -77,7 +77,96 @@
         },
         "operationId": "get-todos"
       },
-      "parameters": []
+      "parameters": [],
+      "post": {
+        "summary": "",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/todo"
+                    }
+                  }
+                },
+                "examples": {
+                  "one": {
+                    "value": {
+                      "data": {
+                        "id": "1",
+                        "type": "todo",
+                        "attributes": {
+                          "title": "sample title",
+                          "detail": "sample detail",
+                          "done": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "required": [
+                    "errors"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "todo": {
+                    "type": "object",
+                    "required": [
+                      "title",
+                      "detail",
+                      "done"
+                    ],
+                    "properties": {
+                      "title": {
+                        "type": "string"
+                      },
+                      "detail": {
+                        "type": "string"
+                      },
+                      "done": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "todo"
+                ]
+              }
+            }
+          }
+        }
+      }
     },
     "/todos/{id}": {
       "get": {

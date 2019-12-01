@@ -3,8 +3,8 @@ class Api::V1::TodosController < Api::V1::ApplicationController
 
   # GET /todos
   def index
-    @todos = Todo.all
-    render json: TodoSerializer.new(@todos).serialized_json
+    todos = Todo.all
+    render json: TodoSerializer.new(todos).serialized_json
   end
 
   # GET /todos/1
@@ -14,12 +14,11 @@ class Api::V1::TodosController < Api::V1::ApplicationController
 
   # POST /todos
   def create
-    @todo = Todo.new(todo_params)
-
-    if @todo.save
-      render json: @todo, status: :created, location: @todo
+    todo = Todo.new(todo_params)
+    if todo.save
+      render json: TodoSerializer.new(todo).serialized_json, status: :created, location: api_v1_todo_path(todo)
     else
-      render json: @todo.errors, status: :unprocessable_entity
+      render_error(todo)
     end
   end
 
@@ -39,13 +38,11 @@ class Api::V1::TodosController < Api::V1::ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_todo
     @todo = Todo.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def todo_params
-    params.fetch(:todo, {})
+    params.require(:todo).permit(Todo.column_names)
   end
 end
