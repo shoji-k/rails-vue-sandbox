@@ -4,7 +4,7 @@ RSpec.describe 'Todos', type: :request do
   include Committee::Rails::Test::Methods
 
   def schema_path
-    Rails.root.join('apidocs/reference/openapi.json')
+    Rails.root.join('apidocs/openapi.json')
   end
 
   def committee_options
