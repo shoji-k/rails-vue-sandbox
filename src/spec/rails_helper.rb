@@ -60,6 +60,16 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  include Committee::Rails::Test::Methods
+
+  def schema_path
+    Rails.root.join('apidocs/openapi.json')
+  end
+
+  def committee_options
+    @committee_options ||= { schema_path: schema_path, prefix: '/api/v1' }
+  end
 end
 
 Shoulda::Matchers.configure do |config|
