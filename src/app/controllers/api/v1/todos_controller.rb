@@ -25,15 +25,16 @@ class Api::V1::TodosController < Api::V1::ApplicationController
   # PATCH/PUT /todos/1
   def update
     if @todo.update(todo_params)
-      render json: @todo
+      render json: TodoSerializer.new(@todo).serialized_json
     else
-      render json: @todo.errors, status: :unprocessable_entity
+      render_error(@todo)
     end
   end
 
   # DELETE /todos/1
   def destroy
     @todo.destroy
+    head :no_content
   end
 
   private

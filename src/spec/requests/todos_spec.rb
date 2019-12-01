@@ -92,4 +92,50 @@ RSpec.describe 'Todos', type: :request do
       end
     end
   end
+
+  describe 'PUT /api/v1/todo/:id' do
+    let!(:todo) { FactoryBot.create(:todo) }
+
+    context 'success' do
+      let(:params) {
+        {
+          title: 'title changed',
+          detail: 'detail changed',
+          done: true
+        }
+      }
+
+      it 'updates the todo' do
+        put api_v1_todo_path(todo), params: { todo: params }
+        assert_response_schema_confirm
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context 'fails' do
+      let(:params) {
+        {
+          title: ''
+        }
+      }
+
+      it 'with wrong params' do
+        put api_v1_todo_path(todo), params: { todo: params }
+        assert_response_schema_confirm
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+  end
+
+  describe 'DELETE /api/v1/todo/:id' do
+    let!(:todo) { FactoryBot.create(:todo) }
+
+    context 'success' do
+      it 'delete the todo' do
+        delete api_v1_todo_path(todo)
+        assert_response_schema_confirm
+        expect(response).to have_http_status(:no_content)
+      end
+    end
+  end
 end
