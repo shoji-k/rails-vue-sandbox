@@ -1,7 +1,7 @@
 version: 1
 update_configs:
   - package_manager: "ruby:bundler"
-    directory: "/"
+    directory: "/src/"
     update_schedule: "weekly"
     automerged_updates:
       - match:
