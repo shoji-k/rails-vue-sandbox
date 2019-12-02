@@ -1,6 +1,6 @@
 version: 1
 update_configs:
-  - package_manager: "javascript"
+  - package_manager: "ruby:bundler"
     directory: "/"
     update_schedule: "weekly"
     automerged_updates:
