@@ -71,4 +71,40 @@ RSpec.describe 'Users', type: :request do
       end
     end
   end
+
+  describe 'PUT /api/v1/user/:id' do
+    context 'success' do
+      let(:params) {
+        {
+          name: 'sample name',
+          email: 'sample@sample.com',
+          password: 'password',
+          password_confirmation: 'password'
+        }
+      }
+
+      it 'updates the user' do
+        put api_v1_user_path(user), params: { user: params }
+        assert_response_schema_confirm
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context 'failure' do
+      let(:params) {
+        {
+          name: 'sample name',
+          email: 'sample@sample.com',
+          password: 'password',
+          password_confirmation: 'wrong password'
+        }
+      }
+
+      it 'get errors with wrong confirm password' do
+        put api_v1_user_path(user), params: { user: params }
+        assert_response_schema_confirm
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+  end
 end
