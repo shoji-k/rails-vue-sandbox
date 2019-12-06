@@ -326,6 +326,42 @@
         },
         "operationId": "get-users"
       }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "api_v1_user",
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/user"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-users-(id)"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ]
     }
   },
   "components": {
