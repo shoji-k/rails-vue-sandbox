@@ -17,5 +17,17 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    subject { FactoryBot.build(:user) }
+
+    it { should have_secure_password }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email).case_insensitive }
+
+    context 'email format' do
+      it { should allow_value('sample@sample.com').for(:email) }
+      it { should_not allow_value('sample').for(:email) }
+    end
+  end
 end
