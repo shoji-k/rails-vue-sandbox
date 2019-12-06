@@ -35,4 +35,40 @@ RSpec.describe 'Users', type: :request do
       end
     end
   end
+
+  describe 'POST /api/v1/user' do
+    context 'success' do
+      let(:params) {
+        {
+          name: 'sample name',
+          email: 'sample@sample.com',
+          password: 'password',
+          password_confirmation: 'password'
+        }
+      }
+
+      it 'creates a user' do
+        post api_v1_users_path, params: { user: params }
+        assert_response_schema_confirm
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context 'failure' do
+      let(:params) {
+        {
+          name: 'sample name',
+          email: 'sample@sample.com',
+          password: 'password',
+          password_confirmation: 'wrong password'
+        }
+      }
+
+      it 'gets errors with the wrong password confirmation' do
+        post api_v1_users_path, params: { user: params }
+        assert_response_schema_confirm
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+  end
 end
