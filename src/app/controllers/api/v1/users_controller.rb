@@ -36,6 +36,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   # DELETE /users/1
   def destroy
     @user.destroy
+    head :no_content
   end
 
   private

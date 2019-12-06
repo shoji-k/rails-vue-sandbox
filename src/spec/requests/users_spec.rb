@@ -107,4 +107,14 @@ RSpec.describe 'Users', type: :request do
       end
     end
   end
+
+  describe 'DELETE /api/v1/user/:id' do
+    context 'success' do
+      it 'deletes the user' do
+        delete api_v1_user_path(user)
+        assert_response_schema_confirm
+        expect(response).to have_http_status(:no_content)
+      end
+    end
+  end
 end
