@@ -476,6 +476,62 @@
           }
         }
       }
+    },
+    "/sign_in": {
+      "post": {
+        "summary": "api_v1_sign_in",
+        "tags": [],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jwt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "jwt"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-sign_in",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "auth": {
+                    "type": "object",
+                    "required": [
+                      "email",
+                      "password"
+                    ],
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      },
+                      "password": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "auth"
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
