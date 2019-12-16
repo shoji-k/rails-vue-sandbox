@@ -6,7 +6,7 @@ RSpec.describe 'Todos', type: :request do
       it 'can access and get empty' do
         get api_v1_todos_path
         assert_response_schema_confirm
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
 
         json = JSON.parse(response.body)
         expect(json['data'].count).to eq(0)
@@ -20,7 +20,7 @@ RSpec.describe 'Todos', type: :request do
         get api_v1_todos_path
         # assert_schema_conform
         assert_response_schema_confirm
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
 
         json = JSON.parse(response.body)
         expect(json['data'].count).to eq(1)
@@ -56,7 +56,7 @@ RSpec.describe 'Todos', type: :request do
       it 'gets data' do
         get api_v1_todo_path(todo)
         assert_response_schema_confirm
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
     end
   end

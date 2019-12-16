@@ -16,7 +16,8 @@ class Api::V1::TodosController < Api::V1::ApplicationController
   def create
     todo = Todo.new(todo_params)
     if todo.save
-      render json: TodoSerializer.new(todo).serialized_json, status: :created, location: api_v1_todo_path(todo)
+      render json: TodoSerializer.new(todo).serialized_json, status: :created,
+             location: api_v1_todo_path(todo)
     else
       render_error(todo)
     end
