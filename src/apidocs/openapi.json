@@ -31,7 +31,23 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/todo"
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "attributes": {
+                            "$ref": "#/components/schemas/todo"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "type",
+                          "attributes"
+                        ]
                       }
                     }
                   },
@@ -97,7 +113,23 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "$ref": "#/components/schemas/todo"
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "type",
+                        "attributes"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "attributes": {
+                          "$ref": "#/components/schemas/todo"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -140,23 +172,7 @@
                 "type": "object",
                 "properties": {
                   "todo": {
-                    "type": "object",
-                    "required": [
-                      "title",
-                      "detail",
-                      "done"
-                    ],
-                    "properties": {
-                      "title": {
-                        "type": "string"
-                      },
-                      "detail": {
-                        "type": "string"
-                      },
-                      "done": {
-                        "type": "boolean"
-                      }
-                    }
+                    "$ref": "#/components/schemas/todo"
                   }
                 },
                 "required": [
@@ -188,7 +204,23 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "$ref": "#/components/schemas/todo"
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "type",
+                        "attributes"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "attributes": {
+                          "$ref": "#/components/schemas/todo"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -216,7 +248,7 @@
                             "type": "string"
                           },
                           "attributes": {
-                            "$ref": "#/components/schemas/user"
+                            "$ref": "#/components/schemas/todo"
                           }
                         },
                         "required": [
@@ -280,12 +312,12 @@
                   "type": "object",
                   "properties": {
                     "data": {
+                      "type": "object",
                       "required": [
                         "id",
                         "type",
                         "attributes"
                       ],
-                      "type": "object",
                       "properties": {
                         "id": {
                           "type": "string"
@@ -294,7 +326,7 @@
                           "type": "string"
                         },
                         "attributes": {
-                          "$ref": "#/components/schemas/user"
+                          "$ref": "#/components/schemas/todo"
                         }
                       }
                     }
@@ -372,7 +404,11 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "type": "object",
+                        "required": [
+                          "id",
+                          "type",
+                          "attributes"
+                        ],
                         "properties": {
                           "id": {
                             "type": "string"
@@ -384,11 +420,7 @@
                             "$ref": "#/components/schemas/user"
                           }
                         },
-                        "required": [
-                          "id",
-                          "type",
-                          "attributes"
-                        ]
+                        "type": "object"
                       }
                     }
                   },
@@ -419,12 +451,6 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "object",
-                      "required": [
-                        "id",
-                        "type",
-                        "attributes"
-                      ],
                       "properties": {
                         "id": {
                           "type": "string"
@@ -435,7 +461,13 @@
                         "attributes": {
                           "$ref": "#/components/schemas/user"
                         }
-                      }
+                      },
+                      "required": [
+                        "id",
+                        "type",
+                        "attributes"
+                      ],
+                      "type": "object"
                     }
                   },
                   "required": [
@@ -487,12 +519,6 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "required": [
-                        "id",
-                        "type",
-                        "attributes"
-                      ],
-                      "type": "object",
                       "properties": {
                         "id": {
                           "type": "string"
@@ -503,7 +529,13 @@
                         "attributes": {
                           "$ref": "#/components/schemas/user"
                         }
-                      }
+                      },
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "type",
+                        "attributes"
+                      ]
                     }
                   },
                   "required": [
@@ -543,12 +575,6 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "required": [
-                        "id",
-                        "type",
-                        "attributes"
-                      ],
-                      "type": "object",
                       "properties": {
                         "id": {
                           "type": "string"
@@ -559,7 +585,13 @@
                         "attributes": {
                           "$ref": "#/components/schemas/user"
                         }
-                      }
+                      },
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "type",
+                        "attributes"
+                      ]
                     }
                   },
                   "required": [
@@ -700,14 +732,14 @@
         },
         "description": "",
         "properties": {
-          "title": {
-            "type": "string"
+          "done": {
+            "type": "boolean"
           },
           "detail": {
             "type": "string"
           },
-          "done": {
-            "type": "boolean"
+          "title": {
+            "type": "string"
           }
         },
         "required": [
@@ -738,16 +770,16 @@
           "user"
         ],
         "properties": {
-          "email": {
-            "type": "string"
-          },
-          "name": {
+          "password_confirmation": {
             "type": "string"
           },
           "password": {
             "type": "string"
           },
-          "password_confirmation": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
             "type": "string"
           }
         },
