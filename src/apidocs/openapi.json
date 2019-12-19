@@ -78,7 +78,12 @@
             }
           }
         },
-        "operationId": "get-todos"
+        "operationId": "get-todos",
+        "security": [
+          {
+            "jwt": []
+          }
+        ]
       },
       "parameters": [],
       "post": {
@@ -160,7 +165,12 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "jwt": []
+          }
+        ]
       }
     },
     "/todos/{id}": {
@@ -223,7 +233,12 @@
         },
         "parameters": [],
         "description": "",
-        "requestBody": {}
+        "requestBody": {},
+        "security": [
+          {
+            "jwt": []
+          }
+        ]
       },
       "parameters": [
         {
@@ -284,7 +299,12 @@
             }
           },
           "description": ""
-        }
+        },
+        "security": [
+          {
+            "jwt": []
+          }
+        ]
       },
       "delete": {
         "summary": "",
@@ -292,7 +312,12 @@
           "204": {
             "description": "No Content"
           }
-        }
+        },
+        "security": [
+          {
+            "jwt": []
+          }
+        ]
       }
     },
     "/users": {
@@ -324,7 +349,12 @@
             }
           }
         },
-        "operationId": "get-users"
+        "operationId": "get-users",
+        "security": [
+          {
+            "jwt": []
+          }
+        ]
       },
       "post": {
         "summary": "",
@@ -404,7 +434,12 @@
             }
           }
         },
-        "operationId": "get-users-(id)"
+        "operationId": "get-users-(id)",
+        "security": [
+          {
+            "jwt": []
+          }
+        ]
       },
       "parameters": [
         {
@@ -465,7 +500,12 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "jwt": []
+          }
+        ]
       },
       "delete": {
         "summary": "",
@@ -473,6 +513,67 @@
         "responses": {
           "204": {
             "description": "No Content"
+          }
+        },
+        "security": [
+          {
+            "jwt": []
+          }
+        ]
+      }
+    },
+    "/sign_in": {
+      "post": {
+        "summary": "api_v1_sign_in",
+        "tags": [],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jwt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "jwt"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-sign_in",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "auth": {
+                    "type": "object",
+                    "required": [
+                      "email",
+                      "password"
+                    ],
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      },
+                      "password": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "auth"
+                ]
+              }
+            }
           }
         }
       }
@@ -587,6 +688,13 @@
           "type",
           "attributes"
         ]
+      }
+    },
+    "securitySchemes": {
+      "jwt": {
+        "name": "Authentication",
+        "type": "apiKey",
+        "in": "header"
       }
     }
   }

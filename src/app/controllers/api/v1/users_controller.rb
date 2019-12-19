@@ -1,4 +1,5 @@
 class Api::V1::UsersController < Api::V1::ApplicationController
+  skip_before_action :authenticate_user, only: [:create]
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users

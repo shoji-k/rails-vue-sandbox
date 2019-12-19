@@ -21,4 +21,9 @@ class User < ApplicationRecord
                     format: { with: URI::MailTo::EMAIL_REGEXP },
                     uniqueness: { case_sensitive: false }
   validates :name, presence: true
+
+  # for knock gem
+  def to_token_payload
+    { sub: id }
+  end
 end
