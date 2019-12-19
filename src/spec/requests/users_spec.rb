@@ -7,7 +7,7 @@ RSpec.describe 'Users', type: :request do
   describe 'GET /api/v1/users' do
     it 'can access and get data' do
       get api_v1_users_path, headers: authenticated_header(login_user)
-      assert_response_schema_confirm
+      assert_schema_conform
       expect(response).to have_http_status(:ok)
 
       json = JSON.parse(response.body)
@@ -31,7 +31,7 @@ RSpec.describe 'Users', type: :request do
     context 'success' do
       it 'gets data' do
         get api_v1_user_path(user), headers: authenticated_header(login_user)
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:ok)
       end
     end
@@ -50,7 +50,7 @@ RSpec.describe 'Users', type: :request do
 
       it 'creates a user' do
         post api_v1_users_path, params: { user: params }
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:success)
       end
     end
@@ -67,7 +67,7 @@ RSpec.describe 'Users', type: :request do
 
       it 'gets errors with the wrong password confirmation' do
         post api_v1_users_path, params: { user: params }
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -86,7 +86,7 @@ RSpec.describe 'Users', type: :request do
 
       it 'updates the user' do
         put api_v1_user_path(user), headers: authenticated_header(login_user), params: { user: params }
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:success)
       end
     end
@@ -103,7 +103,7 @@ RSpec.describe 'Users', type: :request do
 
       it 'get errors with wrong confirm password' do
         put api_v1_user_path(user), headers: authenticated_header(login_user), params: { user: params }
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -113,7 +113,7 @@ RSpec.describe 'Users', type: :request do
     context 'success' do
       it 'deletes the user' do
         delete api_v1_user_path(user), headers: authenticated_header(login_user)
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:no_content)
       end
     end
