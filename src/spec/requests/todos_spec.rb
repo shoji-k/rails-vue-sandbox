@@ -7,7 +7,7 @@ RSpec.describe 'Todos', type: :request do
     context 'without data' do
       it 'can access and get empty' do
         get api_v1_todos_path, headers: authenticated_header(login_user)
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:ok)
 
         json = JSON.parse(response.body)
@@ -20,8 +20,7 @@ RSpec.describe 'Todos', type: :request do
 
       it 'can access and get data' do
         get api_v1_todos_path, headers: authenticated_header(login_user)
-        # assert_schema_conform
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:ok)
 
         json = JSON.parse(response.body)
@@ -57,7 +56,7 @@ RSpec.describe 'Todos', type: :request do
 
       it 'gets data' do
         get api_v1_todo_path(todo), headers: authenticated_header(login_user)
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:ok)
       end
     end
@@ -75,7 +74,7 @@ RSpec.describe 'Todos', type: :request do
 
       it 'creates a todo' do
         post api_v1_todos_path, headers: authenticated_header(login_user), params: { todo: params }
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:success)
       end
     end
@@ -89,7 +88,7 @@ RSpec.describe 'Todos', type: :request do
       }
       it 'gets errors without a mandatory field' do
         post api_v1_todos_path, headers: authenticated_header(login_user), params: { todo: params }
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -109,7 +108,7 @@ RSpec.describe 'Todos', type: :request do
 
       it 'updates the todo' do
         put api_v1_todo_path(todo), headers: authenticated_header(login_user), params: { todo: params }
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:success)
       end
     end
@@ -123,7 +122,7 @@ RSpec.describe 'Todos', type: :request do
 
       it 'with wrong params' do
         put api_v1_todo_path(todo), headers: authenticated_header(login_user), params: { todo: params }
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -135,7 +134,7 @@ RSpec.describe 'Todos', type: :request do
     context 'success' do
       it 'deletes the todo' do
         delete api_v1_todo_path(todo), headers: authenticated_header(login_user)
-        assert_response_schema_confirm
+        assert_schema_conform
         expect(response).to have_http_status(:no_content)
       end
     end
