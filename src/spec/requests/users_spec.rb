@@ -1,16 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
+  let!(:login_user) { FactoryBot.create(:user) }
   let!(:user) { FactoryBot.create(:user) }
 
   describe 'GET /api/v1/users' do
     it 'can access and get data' do
-      get api_v1_users_path
+      get api_v1_users_path, headers: authenticated_header(login_user)
       assert_response_schema_confirm
       expect(response).to have_http_status(:ok)
 
       json = JSON.parse(response.body)
-      expect(json['data'].count).to eq(1)
+      expect(json['data'].count).to eq(2)
     end
   end
 
@@ -22,14 +23,14 @@ RSpec.describe 'Users', type: :request do
 
       it 'throws not found error' do
         expect {
-          get(api_v1_user_path(dummy_user_id.to_s))
+          get api_v1_user_path(dummy_user_id.to_s), headers: authenticated_header(login_user)
         }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
     context 'success' do
       it 'gets data' do
-        get api_v1_user_path(user)
+        get api_v1_user_path(user), headers: authenticated_header(login_user)
         assert_response_schema_confirm
         expect(response).to have_http_status(:ok)
       end
@@ -84,7 +85,7 @@ RSpec.describe 'Users', type: :request do
       }
 
       it 'updates the user' do
-        put api_v1_user_path(user), params: { user: params }
+        put api_v1_user_path(user), headers: authenticated_header(login_user), params: { user: params }
         assert_response_schema_confirm
         expect(response).to have_http_status(:success)
       end
@@ -101,7 +102,7 @@ RSpec.describe 'Users', type: :request do
       }
 
       it 'get errors with wrong confirm password' do
-        put api_v1_user_path(user), params: { user: params }
+        put api_v1_user_path(user), headers: authenticated_header(login_user), params: { user: params }
         assert_response_schema_confirm
         expect(response).to have_http_status(:unprocessable_entity)
       end
@@ -111,7 +112,7 @@ RSpec.describe 'Users', type: :request do
   describe 'DELETE /api/v1/user/:id' do
     context 'success' do
       it 'deletes the user' do
-        delete api_v1_user_path(user)
+        delete api_v1_user_path(user), headers: authenticated_header(login_user)
         assert_response_schema_confirm
         expect(response).to have_http_status(:no_content)
       end
