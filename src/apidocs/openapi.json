@@ -16,7 +16,7 @@
   "paths": {
     "/todos": {
       "get": {
-        "summary": "api_v1_todos",
+        "summary": "",
         "tags": [
           "todo"
         ],
@@ -31,7 +31,11 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "type": "object",
+                        "required": [
+                          "id",
+                          "type",
+                          "attributes"
+                        ],
                         "properties": {
                           "id": {
                             "type": "string"
@@ -43,11 +47,7 @@
                             "$ref": "#/components/schemas/todo"
                           }
                         },
-                        "required": [
-                          "id",
-                          "type",
-                          "attributes"
-                        ]
+                        "type": "object"
                       }
                     }
                   },
@@ -113,12 +113,6 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "object",
-                      "required": [
-                        "id",
-                        "type",
-                        "attributes"
-                      ],
                       "properties": {
                         "id": {
                           "type": "string"
@@ -129,7 +123,13 @@
                         "attributes": {
                           "$ref": "#/components/schemas/todo"
                         }
-                      }
+                      },
+                      "required": [
+                        "id",
+                        "type",
+                        "attributes"
+                      ],
+                      "type": "object"
                     }
                   },
                   "required": [
@@ -186,12 +186,15 @@
           {
             "jwt": []
           }
+        ],
+        "tags": [
+          "todo"
         ]
       }
     },
     "/todos/{id}": {
       "get": {
-        "summary": "api_v1_todo",
+        "summary": "",
         "tags": [
           "todo"
         ],
@@ -204,12 +207,6 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "object",
-                      "required": [
-                        "id",
-                        "type",
-                        "attributes"
-                      ],
                       "properties": {
                         "id": {
                           "type": "string"
@@ -220,7 +217,13 @@
                         "attributes": {
                           "$ref": "#/components/schemas/todo"
                         }
-                      }
+                      },
+                      "required": [
+                        "id",
+                        "type",
+                        "attributes"
+                      ],
+                      "type": "object"
                     }
                   },
                   "required": [
@@ -237,7 +240,6 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "array",
                       "items": {
                         "type": "object",
                         "properties": {
@@ -256,7 +258,8 @@
                           "type",
                           "attributes"
                         ]
-                      }
+                      },
+                      "type": "array"
                     }
                   },
                   "required": [
@@ -312,12 +315,6 @@
                   "type": "object",
                   "properties": {
                     "data": {
-                      "type": "object",
-                      "required": [
-                        "id",
-                        "type",
-                        "attributes"
-                      ],
                       "properties": {
                         "id": {
                           "type": "string"
@@ -328,7 +325,13 @@
                         "attributes": {
                           "$ref": "#/components/schemas/todo"
                         }
-                      }
+                      },
+                      "required": [
+                        "id",
+                        "type",
+                        "attributes"
+                      ],
+                      "type": "object"
                     }
                   },
                   "required": [
@@ -371,6 +374,9 @@
           {
             "jwt": []
           }
+        ],
+        "tags": [
+          "todo"
         ]
       },
       "delete": {
@@ -384,12 +390,15 @@
           {
             "jwt": []
           }
+        ],
+        "tags": [
+          "todo"
         ]
       }
     },
     "/users": {
       "get": {
-        "summary": "api_v1_users",
+        "summary": "",
         "tags": [
           "user"
         ],
@@ -404,11 +413,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "required": [
-                          "id",
-                          "type",
-                          "attributes"
-                        ],
+                        "type": "object",
                         "properties": {
                           "id": {
                             "type": "string"
@@ -420,7 +425,11 @@
                             "$ref": "#/components/schemas/user"
                           }
                         },
-                        "type": "object"
+                        "required": [
+                          "id",
+                          "type",
+                          "attributes"
+                        ]
                       }
                     }
                   },
@@ -451,6 +460,12 @@
                   "type": "object",
                   "properties": {
                     "data": {
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "type",
+                        "attributes"
+                      ],
                       "properties": {
                         "id": {
                           "type": "string"
@@ -461,13 +476,7 @@
                         "attributes": {
                           "$ref": "#/components/schemas/user"
                         }
-                      },
-                      "required": [
-                        "id",
-                        "type",
-                        "attributes"
-                      ],
-                      "type": "object"
+                      }
                     }
                   },
                   "required": [
@@ -501,12 +510,15 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "user"
+        ]
       }
     },
     "/users/{id}": {
       "get": {
-        "summary": "api_v1_user",
+        "summary": "",
         "tags": [
           "user"
         ],
@@ -519,6 +531,12 @@
                   "type": "object",
                   "properties": {
                     "data": {
+                      "required": [
+                        "id",
+                        "type",
+                        "attributes"
+                      ],
+                      "type": "object",
                       "properties": {
                         "id": {
                           "type": "string"
@@ -529,13 +547,7 @@
                         "attributes": {
                           "$ref": "#/components/schemas/user"
                         }
-                      },
-                      "type": "object",
-                      "required": [
-                        "id",
-                        "type",
-                        "attributes"
-                      ]
+                      }
                     }
                   },
                   "required": [
@@ -575,6 +587,12 @@
                   "type": "object",
                   "properties": {
                     "data": {
+                      "required": [
+                        "id",
+                        "type",
+                        "attributes"
+                      ],
+                      "type": "object",
                       "properties": {
                         "id": {
                           "type": "string"
@@ -585,13 +603,7 @@
                         "attributes": {
                           "$ref": "#/components/schemas/user"
                         }
-                      },
-                      "type": "object",
-                      "required": [
-                        "id",
-                        "type",
-                        "attributes"
-                      ]
+                      }
                     }
                   },
                   "required": [
@@ -633,6 +645,9 @@
           {
             "jwt": []
           }
+        ],
+        "tags": [
+          "user"
         ]
       },
       "delete": {
@@ -647,12 +662,15 @@
           {
             "jwt": []
           }
+        ],
+        "tags": [
+          "user"
         ]
       }
     },
     "/sign_in": {
       "post": {
-        "summary": "api_v1_sign_in",
+        "summary": "Sign in",
         "tags": [],
         "responses": {
           "201": {
@@ -703,7 +721,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       }
     }
   },
@@ -732,14 +751,14 @@
         },
         "description": "",
         "properties": {
-          "done": {
-            "type": "boolean"
+          "title": {
+            "type": "string"
           },
           "detail": {
             "type": "string"
           },
-          "title": {
-            "type": "string"
+          "done": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -770,16 +789,16 @@
           "user"
         ],
         "properties": {
-          "password_confirmation": {
-            "type": "string"
-          },
-          "password": {
+          "email": {
             "type": "string"
           },
           "name": {
             "type": "string"
           },
-          "email": {
+          "password": {
+            "type": "string"
+          },
+          "password_confirmation": {
             "type": "string"
           }
         },
