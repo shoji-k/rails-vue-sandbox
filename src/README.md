@@ -12,3 +12,9 @@ $ bin/rails db:seed_fu
 ```
 $ bin/rspec
 ```
+
+with coverage output
+
+```
+$ COVERAGE=true bin/rspec
+```
