@@ -1,2 +1,2 @@
-require "knock/version"
-require "knock/authenticable"
+require 'knock/version'
+require 'knock/authenticable'
