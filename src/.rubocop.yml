@@ -30,6 +30,10 @@ Style/ClassAndModuleChildren:
 Style/NumericPredicate:
   Enabled: false
 
+Style/StringLiterals:
+  Exclude:
+    - 'db/schema.rb'
+
 Style/SymbolArray:
   Enabled: false
 
@@ -63,7 +67,7 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 9
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 160
   Exclude:
     - "db/migrate/*.rb"
