@@ -30,10 +30,6 @@ Style/ClassAndModuleChildren:
 Style/NumericPredicate:
   Enabled: false
 
-Style/StringLiterals:
-  Exclude:
-    - 'db/schema.rb'
-
 Style/SymbolArray:
   Enabled: false
 
