@@ -26,15 +26,17 @@ jobs:
     - name: Cache bundle directory
       uses: actions/cache@v1
       with:
-        path: src/vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/src/Gemfile.lock') }}
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
+      working-directory: ./src
     - name: Prepare bundler
       run: |
         gem install bundler
         bundle config path src/vendor/bundle
         bundle install --jobs 4 --retry 3
+      working-directory: ./src
     - name: Prepare database
       run: |
         bin/rails db:create
