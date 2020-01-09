@@ -35,7 +35,6 @@ jobs:
         gem install bundler
         bundle config path src/vendor/bundle
         bundle install --jobs 4 --retry 3
-      working-directory: ./src
     - name: Prepare database
       run: |
         bin/rails db:create
