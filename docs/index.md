@@ -1,3 +1,0 @@
-## rails sandbox
-
-wip
