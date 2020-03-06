@@ -52,4 +52,9 @@ Rails.application.configure do
   # set DEV_HOST_NAME if you don't use localhost
   development_host_name = ENV.fetch('DEV_HOST_NAME', nil)
   config.hosts << development_host_name if development_host_name.present?
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.rails_logger = true
+  end
 end
