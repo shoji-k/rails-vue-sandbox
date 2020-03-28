@@ -1,0 +1,17 @@
+.env
+.git
+.github
+.gitignore
+README.md
+docker-compose.yml
+Dockerfile
+Dockerfile.build
+
+# Rails
+log
+tmp
+coverage
+
+# app
+apidocs
+storage
