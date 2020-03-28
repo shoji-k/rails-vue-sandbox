@@ -1,4 +1,4 @@
-re 'rails/application_controller'
+require 'rails/application_controller'
 
 class StaticController < Rails::ApplicationController
   def index
