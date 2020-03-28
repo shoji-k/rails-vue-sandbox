@@ -1,7 +1,9 @@
 version: '3'
 services:
   rails:
-    image: shojik/ruby:2.6
+    build:
+      context: ./src
+      # dockerfile: Dockerfile
     volumes:
       - ./src:/app
       - bundle:/bundle
