@@ -3,7 +3,7 @@ services:
   rails:
     build:
       context: ./src
-      # dockerfile: Dockerfile
+    command: bin/rails s -b 0.0.0.0
     volumes:
       - ./src:/app
       - bundle:/bundle
