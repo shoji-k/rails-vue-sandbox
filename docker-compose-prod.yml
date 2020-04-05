@@ -1,12 +1,9 @@
 version: '3'
 services:
   rails-prod:
-    build:
-      context: ./src
-      dockerfile: Dockerfile.build
+    image: shojik/rails-sandbox-prod:latest
     volumes:
       - ./src:/app
-      - bundle:/bundle
     ports:
       - 3000:3000
     depends_on:
@@ -45,5 +42,3 @@ services:
   #   image: schickling/mailcatcher
   #   ports:
   #     - "33001:1080"
-volumes:
-  bundle:

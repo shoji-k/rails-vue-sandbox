@@ -6,7 +6,6 @@ services:
     command: bin/rails s -b 0.0.0.0
     volumes:
       - ./src:/app
-      - bundle:/bundle
     ports:
       - 3000:3000
     depends_on:
@@ -45,5 +44,3 @@ services:
   #   image: schickling/mailcatcher
   #   ports:
   #     - "33001:1080"
-volumes:
-  bundle:
