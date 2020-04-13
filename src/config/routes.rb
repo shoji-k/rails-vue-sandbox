@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post 'sign_in' => 'user_token#create'
       resources :users
       resources :todos
+      get 'httpbin' => 'httpbin#index'
     end
   end
 end
