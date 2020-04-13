@@ -724,6 +724,31 @@
         },
         "description": ""
       }
+    },
+    "/httpbin": {
+      "get": {
+        "summary": "get ip",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ip": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-httpbin"
+      }
     }
   },
   "components": {
