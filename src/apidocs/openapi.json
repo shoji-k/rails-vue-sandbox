@@ -707,10 +707,12 @@
                     ],
                     "properties": {
                       "email": {
-                        "type": "string"
+                        "type": "string",
+                        "example": "sample@sample.com"
                       },
                       "password": {
-                        "type": "string"
+                        "type": "string",
+                        "example": "Password1!"
                       }
                     }
                   }
@@ -722,7 +724,8 @@
             }
           }
         },
-        "description": ""
+        "description": "",
+        "parameters": []
       }
     },
     "/httpbin": {
