@@ -27,6 +27,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 
   # PATCH/PUT /users/1
   def update
+    authorize! @user
     if @user.update(user_params)
       render json: UserSerializer.new(@user).serialized_json
     else
