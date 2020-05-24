@@ -674,7 +674,7 @@
                     "properties": {
                       "email": {
                         "type": "string",
-                        "example": "sample@sample.com"
+                        "example": "system@sample.com"
                       },
                       "password": {
                         "type": "string",
@@ -755,6 +755,7 @@
             "type": "boolean"
           }
         },
+        "additionalProperties": false,
         "required": [
           "title",
           "detail",
@@ -772,6 +773,7 @@
             }
           }
         },
+        "additionalProperties": false,
         "required": [
           "errors"
         ]
@@ -782,6 +784,7 @@
         "x-tags": [
           "user"
         ],
+        "additionalProperties": false,
         "properties": {
           "email": {
             "type": "string"
@@ -794,6 +797,9 @@
           },
           "password_confirmation": {
             "type": "string"
+          },
+          "role": {
+            "type": "string"
           }
         },
         "required": [
@@ -804,9 +810,10 @@
     },
     "securitySchemes": {
       "jwt": {
-        "name": "Authentication",
+        "name": "Authorization",
         "type": "apiKey",
-        "in": "header"
+        "in": "header",
+        "description": "Bearer (jwt token)"
       }
     }
   }
