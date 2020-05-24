@@ -229,42 +229,6 @@
                   "required": [
                     "data"
                   ]
-                }
-              }
-            }
-          },
-          "": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "type": {
-                            "type": "string"
-                          },
-                          "attributes": {
-                            "$ref": "#/components/schemas/todo"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "type",
-                          "attributes"
-                        ]
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "required": [
-                    "data"
-                  ]
                 },
                 "examples": {
                   "one": {
@@ -286,8 +250,7 @@
           }
         },
         "parameters": [],
-        "description": "",
-        "requestBody": {},
+        "description": "get a todo",
         "security": [
           {
             "jwt": []
@@ -377,7 +340,8 @@
         ],
         "tags": [
           "todo"
-        ]
+        ],
+        "description": "change the todo"
       },
       "delete": {
         "summary": "",
@@ -393,7 +357,9 @@
         ],
         "tags": [
           "todo"
-        ]
+        ],
+        "description": "delete the todo",
+        "operationId": ""
       }
     },
     "/users": {
