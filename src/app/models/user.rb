@@ -23,6 +23,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :name, presence: true
 
+  enum role: { system: 1, admin: 2, normal: 3 }, _suffix: true
+
   # for knock gem
   def to_token_payload
     { sub: id }
