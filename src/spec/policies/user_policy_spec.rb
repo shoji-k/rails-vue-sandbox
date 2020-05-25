@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe UserPolicy, type: :policy do
-  let(:user) { FactoryBot.create(:user) }
-  let(:record) { user }
-  let(:context) { { user: user } }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:record) { user }
+  let!(:context) { { user: user } }
 
   describe_rule :index? do
     succeed 'when user is system'
@@ -32,18 +32,6 @@ RSpec.describe UserPolicy, type: :policy do
   describe_rule :create? do
     succeed 'when user is system'
 
-    failed 'when user is admin' do
-      before { user.role = :admin }
-    end
-
-    failed 'when user is normal' do
-      before { user.role = :normal }
-    end
-  end
-
-  describe_rule :update? do
-    succeed 'when user is system'
-
     succeed 'when user is admin' do
       before { user.role = :admin }
     end
@@ -53,15 +41,23 @@ RSpec.describe UserPolicy, type: :policy do
     end
   end
 
-  describe_rule :destroy? do
+  describe_rule :edit? do
     succeed 'when user is system'
 
     succeed 'when user is admin' do
       before { user.role = :admin }
+
+      failed 'when user is admin and willing to change other' do
+        let(:record) { FactoryBot.create(:user) }
+      end
     end
 
     succeed 'when user is normal' do
       before { user.role = :normal }
+
+      failed 'when user is admin and willing to change other' do
+        let(:record) { FactoryBot.create(:user) }
+      end
     end
   end
 end

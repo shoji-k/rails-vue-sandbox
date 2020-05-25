@@ -1,6 +1,6 @@
 class UserPolicy < ApplicationPolicy
-  # See https://actionpolicy.evilmartians.io/#/writing_policies
-  #
+  alias_rule :update?, :destroy?, to: :edit?
+
   def index?
     true
   end
@@ -10,24 +10,12 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    user.system_role?
+    true
   end
 
-  def update?
+  def edit?
     return true if user.system_role?
 
     user.id == record.id
   end
-
-  def destroy?
-    true
-  end
-
-  # Scoping
-  # See https://actionpolicy.evilmartians.io/#/scoping
-  #
-  # relation_scope do |relation|
-  #   next relation if user.admin?
-  #   relation.where(user: user)
-  # end
 end
