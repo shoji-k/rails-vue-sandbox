@@ -1,4 +1,5 @@
 class UserPolicy < ApplicationPolicy
+  default_rule :index?
   alias_rule :update?, :destroy?, to: :edit?
 
   def index?
