@@ -4,7 +4,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 
   # GET /users
   def index
-    authorize! User
+    authorize!
 
     users = User.all
     render json: UserSerializer.new(users).serialized_json
@@ -12,7 +12,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 
   # GET /users/1
   def show
-    authorize! @user
+    authorize!
 
     render json: UserSerializer.new(@user).serialized_json
   end

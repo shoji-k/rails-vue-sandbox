@@ -17,7 +17,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
       it 'is set' do
         expect {
           get api_v1_user_path(user), headers: authenticated_header(login_user)
-        }.to be_authorized_to(:show?, an_instance_of(User)).with(UserPolicy)
+        }.to be_authorized_to(:show?, User).with(UserPolicy)
       end
     end
   end
