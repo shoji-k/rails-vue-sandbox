@@ -6,6 +6,7 @@
 #  email           :string           not null
 #  name            :string           not null
 #  password_digest :string           not null
+#  role            :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -18,6 +19,7 @@ FactoryBot.define do
   factory :user do
     sequence(:name) { |n| "user#{n}" }
     sequence(:email) { |n| "user#{n}@sample.com" }
+    role { :system }
     password { 'password' }
     password_confirmation { 'password' }
   end

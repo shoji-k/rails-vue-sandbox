@@ -44,7 +44,8 @@ RSpec.describe 'Users', type: :request do
           name: 'sample name',
           email: 'sample@sample.com',
           password: 'password',
-          password_confirmation: 'password'
+          password_confirmation: 'password',
+          role: :system
         }
       }
 

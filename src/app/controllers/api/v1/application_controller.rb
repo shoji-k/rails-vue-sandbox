@@ -1,6 +1,8 @@
 class Api::V1::ApplicationController < ActionController::API
+  include ActionPolicy::Controller
   include Knock::Authenticable
   before_action :authenticate_user
+  authorize :user, through: :current_user
 
   def render_error(model)
     errors = []

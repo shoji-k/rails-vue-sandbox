@@ -6,6 +6,7 @@
 #  email           :string           not null
 #  name            :string           not null
 #  password_digest :string           not null
+#  role            :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -21,6 +22,8 @@ class User < ApplicationRecord
                     format: { with: URI::MailTo::EMAIL_REGEXP },
                     uniqueness: { case_sensitive: false }
   validates :name, presence: true
+
+  enum role: { system: 1, admin: 2, normal: 3 }, _suffix: true
 
   # for knock gem
   def to_token_payload

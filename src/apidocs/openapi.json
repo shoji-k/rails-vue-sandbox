@@ -229,42 +229,6 @@
                   "required": [
                     "data"
                   ]
-                }
-              }
-            }
-          },
-          "": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "type": {
-                            "type": "string"
-                          },
-                          "attributes": {
-                            "$ref": "#/components/schemas/todo"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "type",
-                          "attributes"
-                        ]
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "required": [
-                    "data"
-                  ]
                 },
                 "examples": {
                   "one": {
@@ -286,8 +250,7 @@
           }
         },
         "parameters": [],
-        "description": "",
-        "requestBody": {},
+        "description": "get a todo",
         "security": [
           {
             "jwt": []
@@ -377,7 +340,8 @@
         ],
         "tags": [
           "todo"
-        ]
+        ],
+        "description": "change the todo"
       },
       "delete": {
         "summary": "",
@@ -393,7 +357,9 @@
         ],
         "tags": [
           "todo"
-        ]
+        ],
+        "description": "delete the todo",
+        "operationId": ""
       }
     },
     "/users": {
@@ -707,10 +673,12 @@
                     ],
                     "properties": {
                       "email": {
-                        "type": "string"
+                        "type": "string",
+                        "example": "system@sample.com"
                       },
                       "password": {
-                        "type": "string"
+                        "type": "string",
+                        "example": "Password1!"
                       }
                     }
                   }
@@ -722,7 +690,8 @@
             }
           }
         },
-        "description": ""
+        "description": "",
+        "parameters": []
       }
     },
     "/httpbin": {
@@ -786,6 +755,7 @@
             "type": "boolean"
           }
         },
+        "additionalProperties": false,
         "required": [
           "title",
           "detail",
@@ -803,6 +773,7 @@
             }
           }
         },
+        "additionalProperties": false,
         "required": [
           "errors"
         ]
@@ -813,6 +784,7 @@
         "x-tags": [
           "user"
         ],
+        "additionalProperties": false,
         "properties": {
           "email": {
             "type": "string"
@@ -825,6 +797,9 @@
           },
           "password_confirmation": {
             "type": "string"
+          },
+          "role": {
+            "type": "string"
           }
         },
         "required": [
@@ -835,9 +810,10 @@
     },
     "securitySchemes": {
       "jwt": {
-        "name": "Authentication",
+        "name": "Authorization",
         "type": "apiKey",
-        "in": "header"
+        "in": "header",
+        "description": "Bearer (jwt token)"
       }
     }
   }

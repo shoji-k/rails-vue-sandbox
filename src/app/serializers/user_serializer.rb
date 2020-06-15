@@ -6,6 +6,7 @@
 #  email           :string           not null
 #  name            :string           not null
 #  password_digest :string           not null
+#  role            :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -16,5 +17,5 @@
 
 class UserSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :email
+  attributes :name, :email, :role
 end
