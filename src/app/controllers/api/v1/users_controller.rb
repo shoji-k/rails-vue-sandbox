@@ -12,7 +12,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 
   # GET /users/1
   def show
-    authorize!
+    authorize! @user
 
     render json: UserSerializer.new(@user).serialized_json
   end
