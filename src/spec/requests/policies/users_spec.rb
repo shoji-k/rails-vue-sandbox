@@ -20,5 +20,34 @@ RSpec.describe 'Api::V1::Users', type: :request do
         }.to be_authorized_to(:show?, an_instance_of(User)).with(UserPolicy)
       end
     end
+
+    describe 'POST /api/v1/user' do
+      # everyone can use this
+    end
+
+    describe 'PUT /api/v1/user/:id' do
+      let(:params) {
+        {
+          name: 'sample name',
+          email: 'sample@sample.com',
+          password: 'password',
+          password_confirmation: 'password'
+        }
+      }
+
+      it 'is set' do
+        expect {
+          put api_v1_user_path(user), headers: authenticated_header(login_user), params: { user: params }
+        }.to be_authorized_to(:edit?, an_instance_of(User)).with(UserPolicy)
+      end
+    end
+
+    describe 'DELETE /api/v1/user/:id' do
+      it 'is set' do
+        expect {
+          delete api_v1_user_path(user), headers: authenticated_header(login_user)
+        }.to be_authorized_to(:edit?, an_instance_of(User)).with(UserPolicy)
+      end
+    end
   end
 end
