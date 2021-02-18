@@ -210,6 +210,9 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 0.90.0, < 2.0)
+    rubocop-rspec (2.2.0)
+      rubocop (~> 1.0)
+      rubocop-ast (>= 1.1.0)
     ruby-next-core (0.11.1)
     ruby-progressbar (1.11.0)
     seed-fu (2.3.9)
@@ -272,6 +275,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   rubocop-rails
+  rubocop-rspec
   seed-fu
   shoulda-matchers
   simplecov
