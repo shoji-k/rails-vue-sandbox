@@ -5,8 +5,8 @@ class SampleJob < ApplicationJob
   queue_as :default
   after_perform :after_perform
 
-  def perform(*args)
-    uri = URI.parse("https://httpbin.org/ip")
+  def perform(*_args)
+    uri = URI.parse('https://httpbin.org/ip')
     response = Net::HTTP.get_response(uri)
     response.code
     # p response.body
@@ -15,6 +15,6 @@ class SampleJob < ApplicationJob
   private
 
   def after_perform
-    p 'finished'
+    # p 'finished'
   end
 end
