@@ -159,3 +159,17 @@ Rails/WhereExists: # (new in 2.7)
   Enabled: true
 Rails/WhereNot: # (new in 2.8)
   Enabled: true
+Lint/EmptyInPattern: # (new in 1.16)
+  Enabled: true
+Style/InPatternThen: # (new in 1.16)
+  Enabled: true
+Style/MultilineInPatternThen: # (new in 1.16)
+  Enabled: true
+Style/QuotedSymbols: # (new in 1.16)
+  Enabled: true
+Style/StringChars: # (new in 1.12)
+  Enabled: true
+Rails/EnvironmentVariableAccess: # (new in 2.10)
+  Enabled: true
+Rails/TimeZoneAssignment: # (new in 2.10)
+  Enabled: true
