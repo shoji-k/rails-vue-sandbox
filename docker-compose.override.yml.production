@@ -1,0 +1,20 @@
+services:
+  rails:
+    build:
+      context: ./src
+      dockerfile: Dockerfile.build
+    command: bin/rails s -b 0.0.0.0
+    volumes:
+      - ./src:/app
+    ports:
+      - 4000:3000
+    depends_on:
+      - db
+    stdin_open: true
+    tty: true
+    environment:
+      RAILS_DATABASE_HOST: db
+      RAILS_DATABASE_USER: pguser
+      RAILS_DATABASE_PASSWORD: password
+      MAIL_HOST: mail
+    env_file: .env
