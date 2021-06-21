@@ -14,7 +14,7 @@ RSpec.describe 'User Token', type: :request do
 
       it 'can login' do
         post api_v1_sign_in_path, params: { auth: params }
-        assert_response_schema_confirm
+        assert_response_schema_confirm 201
         expect(response).to have_http_status(:success)
 
         data = JSON.parse(response.body)
