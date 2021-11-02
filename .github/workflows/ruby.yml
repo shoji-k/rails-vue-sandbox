@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
-      RAILS_DATABASE_HOST: postgres # this is needed
       RAILS_DATABASE_USER: pguser
       RAILS_DATABASE_PASSWORD: password
     services:
