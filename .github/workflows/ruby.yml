@@ -25,6 +25,7 @@ jobs:
         with:
           ruby-version: 2.7.4
           bundler-cache: true
+          working-directory: ./src
       - name: Prepare database
         run: |
           bin/rails db:create
