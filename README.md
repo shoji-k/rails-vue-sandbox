@@ -5,6 +5,15 @@
 ### start developing
 
 ```bash
+docker-compose build
+docker-compose run --rm rails bin/rails db:create
+docker-compose run --rm rails bin/rails db:migrate
+docker-compose run --rm rails bin/rails db:seed_fu
+```
+
+then
+
+```bash
 docker-compose up
 ```
 
