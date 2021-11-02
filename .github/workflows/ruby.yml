@@ -22,9 +22,9 @@ jobs:
         RAILS_DATABASE_USER: pguser
         RAILS_DATABASE_PASSWORD: password
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Cache bundle directory
-      uses: actions/cache@v1
+      uses: actions/cache@v2
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
