@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    action_policy (0.6.1)
+    action_policy (0.6.2)
       ruby-next-core (>= 0.14.0)
     actioncable (6.1.4.6)
       actionpack (= 6.1.4.6)
@@ -212,7 +212,7 @@ GEM
       rubocop (>= 1.7.0, < 2.0)
     rubocop-rspec (2.11.1)
       rubocop (~> 1.19)
-    ruby-next-core (0.15.1)
+    ruby-next-core (0.15.2)
     ruby-progressbar (1.11.0)
     seed-fu (2.3.9)
       activerecord (>= 3.1)
