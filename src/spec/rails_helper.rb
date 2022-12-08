@@ -85,7 +85,7 @@ RSpec.configure do |config|
   end
 
   def committee_options
-    @committee_options ||= { schema_path: schema_path, prefix: '/api/v1', old_assert_behavior: true, parse_response_by_content_type: false,
+    @committee_options ||= { schema_path:, prefix: '/api/v1', old_assert_behavior: true, parse_response_by_content_type: false,
                              query_hash_key: 'rack.request.query_hash' }
   end
 end

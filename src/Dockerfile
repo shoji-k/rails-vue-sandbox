@@ -1,4 +1,4 @@
-FROM ruby:2.7.4
+FROM ruby:3.1.2
 
 ENV APP_HOME /app
 
@@ -8,8 +8,6 @@ RUN apt-get update -qq \
   && rm -rf /var/lib/apt/lists/*
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
-
-RUN gem install bundler -v '2.1.4' -N
 
 COPY Gemfile $APP_HOME/Gemfile
 COPY Gemfile.lock $APP_HOME/Gemfile.lock
