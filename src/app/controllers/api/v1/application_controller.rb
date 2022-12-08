@@ -12,6 +12,6 @@ class Api::V1::ApplicationController < ActionController::API
              else
                :bad_request
              end
-    render json: { errors: errors }, status: status
+    render json: { errors: }, status:
   end
 end

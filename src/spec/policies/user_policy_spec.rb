@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UserPolicy, type: :policy do
   let!(:user) { FactoryBot.create(:user) }
   let!(:record) { user }
-  let!(:context) { { user: user } }
+  let!(:context) { { user: } }
 
   describe_rule :index? do
     succeed 'when user is system'

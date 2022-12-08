@@ -16,7 +16,7 @@ services:
       MAIL_HOST: mail
     env_file: .env
   db:
-    image: shojik/postgres:12
+    image: postgres:15.1
     volumes:
       - ./pgdata:/var/lib/postgresql/data
       - ./log:/root/log:cached

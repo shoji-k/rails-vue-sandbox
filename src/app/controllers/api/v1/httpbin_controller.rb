@@ -7,6 +7,6 @@ class Api::V1::HttpbinController < Api::V1::ApplicationController
     uri = URI.parse('https://httpbin.org/ip')
     response = Net::HTTP.get_response(uri)
     ip = JSON.parse(response.body)['origin']
-    render json: { ip: ip }
+    render json: { ip: }
   end
 end

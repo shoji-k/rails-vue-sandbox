@@ -5,30 +5,36 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      RAILS_ENV: test
-      RAILS_DATABASE_USER: pguser
-      RAILS_DATABASE_PASSWORD: password
     services:
       postgres:
-        image: postgres:12
+        image: postgres:15.1
         ports:
           - 5432:5432
         env:
           POSTGRES_USER: pguser
           POSTGRES_PASSWORD: password
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    container:
+      image: ruby:3.1.2
+      env:
+        RAILS_ENV: test
+        RAILS_DATABASE_HOST: postgres # this is needed
+        RAILS_DATABASE_USER: pguser
+        RAILS_DATABASE_PASSWORD: password
     steps:
       - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7.4
-          bundler-cache: true
-          working-directory: ./src
+      - name: Bundle install
+        run: |
+          bundle config set path 'vendor/bundle'
+          bundle install --jobs 4 --retry 3
+        working-directory: ./src
       - name: Prepare database
         run: |
           bin/rails db:create
           bin/rails db:schema:load
+        working-directory: ./src
+      - name: Check by linter
+        run: bundle exec rubocop -a app spec
         working-directory: ./src
       - name: Run test
         run: bin/rspec
