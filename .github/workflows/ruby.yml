@@ -34,7 +34,7 @@ jobs:
           bin/rails db:schema:load
         working-directory: ./src
       - name: Check by linter
-        run: bundle exec rubocop
+        run: bundle exec rubocop -a app spec
         working-directory: ./src
       - name: Run test
         run: bin/rspec
