@@ -234,7 +234,7 @@ GEM
     seed-fu (2.3.9)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
-    shoulda-matchers (5.2.0)
+    shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
     simplecov (0.21.2)
       docile (~> 1.1)
