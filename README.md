@@ -5,21 +5,21 @@
 ### start developing
 
 ```bash
-docker-compose build
-docker-compose run --rm rails bin/rails db:create
-docker-compose run --rm rails bin/rails db:migrate
-docker-compose run --rm rails bin/rails db:seed_fu
+docker compose build
+docker compose run --rm rails bin/rails db:create
+docker compose run --rm rails bin/rails db:migrate
+docker compose run --rm rails bin/rails db:seed_fu
 ```
 
 then
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 ### production
 
 ```bash
 cp docker-compose.override.yml.production docker-compose.override.yml
-docker-compose up
+docker compose up
 ```
