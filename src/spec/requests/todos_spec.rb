@@ -10,7 +10,7 @@ RSpec.describe 'Todos', type: :request do
         assert_schema_conform 200
         expect(response).to have_http_status(:ok)
 
-        json = JSON.parse(response.body)
+        json = response.parsed_body
         expect(json['data'].count).to eq(0)
       end
     end
@@ -23,7 +23,7 @@ RSpec.describe 'Todos', type: :request do
         assert_schema_conform 200
         expect(response).to have_http_status(:ok)
 
-        json = JSON.parse(response.body)
+        json = response.parsed_body
         expect(json['data'].count).to eq(1)
 
         first = json['data'].first

@@ -10,7 +10,7 @@ RSpec.describe 'Httpbin', type: :request do
           assert_response_schema_confirm 200
           expect(response).to have_http_status(:success)
 
-          data = JSON.parse(response.body)
+          data = response.parsed_body
           expect(data['ip']).to eq('157.147.142.112')
         end
       end

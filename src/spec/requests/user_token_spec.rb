@@ -17,7 +17,7 @@ RSpec.describe 'User Token', type: :request do
         assert_response_schema_confirm 201
         expect(response).to have_http_status(:success)
 
-        data = JSON.parse(response.body)
+        data = response.parsed_body
         expect(data['jwt']).not_to be ''
       end
     end
