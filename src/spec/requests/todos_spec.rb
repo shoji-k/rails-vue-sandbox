@@ -86,6 +86,7 @@ RSpec.describe 'Todos', type: :request do
           done: false
         }
       }
+
       it 'gets errors without a mandatory field' do
         post api_v1_todos_path, headers: authenticated_header(login_user), params: { todo: params }
         assert_schema_conform 422
