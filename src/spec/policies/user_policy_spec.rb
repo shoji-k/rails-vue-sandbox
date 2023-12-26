@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable RSpec/RepeatedExampleGroupBody
 RSpec.describe UserPolicy, type: :policy do
   let!(:user) { FactoryBot.create(:user) }
   let!(:record) { user } # rubocop:disable RSpec/LetSetup
@@ -61,3 +62,4 @@ RSpec.describe UserPolicy, type: :policy do
     end
   end
 end
+# rubocop:enable RSpec/RepeatedExampleGroupBody
