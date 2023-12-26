@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Api::V1::Users', type: :request do
+RSpec.describe 'Api::V1::Users' do
   let!(:login_user) { FactoryBot.create(:user) }
   let!(:user) { FactoryBot.create(:user) }
 
@@ -21,9 +21,11 @@ RSpec.describe 'Api::V1::Users', type: :request do
       end
     end
 
+    # rubocop:disable RSpec/EmptyExampleGroup
     describe 'POST /api/v1/user' do
       # everyone can use this
     end
+    # rubocop:enable RSpec/EmptyExampleGroup
 
     describe 'PUT /api/v1/user/:id' do
       let(:params) {

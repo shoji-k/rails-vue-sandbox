@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
+RSpec.describe 'Users' do
   let!(:login_user) { FactoryBot.create(:user) }
   let!(:user) { FactoryBot.create(:user) }
 

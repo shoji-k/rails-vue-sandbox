@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Todos', type: :request do
+RSpec.describe 'Todos' do
   let!(:login_user) { FactoryBot.create(:user) }
 
   describe 'GET /api/v1/todos' do

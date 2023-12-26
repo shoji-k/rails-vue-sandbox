@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Httpbin', type: :request do
+RSpec.describe 'Httpbin' do
   describe 'GET /api/v1/httpbin' do
     context 'ip' do
       it 'can be got' do

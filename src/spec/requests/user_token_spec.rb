@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User Token', type: :request do
+RSpec.describe 'User Token' do
   let(:user) { FactoryBot.create(:user) }
 
   describe 'GET /api/v1/sign_in' do
