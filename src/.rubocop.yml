@@ -13,6 +13,9 @@ AllCops:
     - "frontend/*"
   DisplayCopNames: true
 
+FactoryBot/SyntaxMethods:
+  Enabled: false
+
 Style/AsciiComments:
   Enabled: false
 
