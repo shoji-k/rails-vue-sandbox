@@ -1,4 +1,4 @@
-FROM ruby:3.1.2
+FROM ruby:3.3.0-rc1
 
 ENV APP_HOME /app
 
