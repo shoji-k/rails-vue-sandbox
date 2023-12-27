@@ -1,4 +1,4 @@
-FROM ruby:3.3.0-rc1
+FROM ruby:3.3.0
 
 ENV APP_HOME /app
 ENV RAILS_ENV production
