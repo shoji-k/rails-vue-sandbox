@@ -1,8 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    action_policy (0.6.7)
-      ruby-next-core (>= 0.14.0)
+    action_policy (0.6.8)
+      ruby-next-core (>= 1.0)
     actioncable (7.1.2)
       actionpack (= 7.1.2)
       activesupport (= 7.1.2)
